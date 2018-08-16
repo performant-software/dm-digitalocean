@@ -1,9 +1,6 @@
 DM-Digital Ocean: Automated deploy scripts for creating an instance of DM 1.x on Digital Ocean.
 ============================================
 
-Setting up your own DM instance:
--------------
-
 The easiest way to host your own instance of DM for your projects is to use [Digital Ocean](https://www.digitalocean.com/) - a cloud computing platform where you can set up virtual server space for as little as $10/month. We’ve set up an optimized process to deploy DM to Digital Ocean.
 
 The size of the “droplet” you will want to set up to host a DM instance will vary, but here is a basic estimate:
@@ -23,7 +20,7 @@ Deploying your own instance to Digital Ocean
 DM supports login through the OAuth protocol, and by default connects to Google's and GitHub's authentication providers. In addition, an independent OAuth provider application can be quickly created using the accompanying [Simple OAuth2 provider](https://github.com/performant-software/oauth-provider) repository. To add this service, follow the deployment instructions in that repository's ReadMe, then navigate to your-provider-application-url/oauth/applications and add an entry for your DM instance. You should use 'DM' for the application name and add your-dm-application-url/accounts/oauth-callback/independent to the Redirect URI field (this field can accommodate a list of callback URIs separated by line breaks, which is useful if you wish to provide authentication to multiple DM instances). Click Submit to save the application configuration, and copy the Application Id (key) and Secret values shown on the subsequent page.
 
 #### Setting configuration variables
-In order to run the provisioning script to create an instance on Digital Ocean, you first need to create a local copy of this repository using `git clone` and fill in configuration values in the file machine-images/digitalocean.json. These include:
+In order to run the provisioning script to create an instance on Digital Ocean, you first need to create a local copy of this repository using `git clone` and fill in configuration values in the file machine-images/digitalocean.json. Make a copy of machine-images/digitalocean.json.example file and fill in the required fields:
 - `digital_ocean_api_token`: see the "How to Generate a Personal Access Token" in [Digital Ocean's API tutorial](https://www.digitalocean.com/community/tutorials/how-to-use-the-digitalocean-api-v2). Your token must be provided here in order for the deployment process to connect with your Digital Ocean account.
 - `superuser_id`: an identifier for a user who should have top-level admin status for all projects created in the instance. The format of this ID will be specific to the authentication provider this user will use; for the independent provider application, the ID will be "independent:username@example.com" with the user's email address replacing the latter part.
 - `google_key` and `google_secret`: to enable login through Google's authentication service, see the [guide for Google's People API](https://developers.google.com/people/v1/getting-started) and fill in the key/secret values here after setting it up with your Google account.
