@@ -1,0 +1,4 @@
+# Provisioning
+provisioning/roles/*.*
+
+machine-images/digitalocean.json

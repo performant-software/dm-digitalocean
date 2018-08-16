@@ -1,0 +1,14 @@
+---
+- import_playbook: python-setup.yml
+
+- hosts: dm
+  roles:
+    - williamyeh.reset-locale
+    - geerlingguy.firewall
+    - geerlingguy.security
+    - geerlingguy.postfix
+    - geerlingguy.java
+    - loris
+    - williamyeh.uwsgi
+    - dm
+    - geerlingguy.nginx
